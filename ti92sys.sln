@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ti92app", "ti92app\ti92app.csproj", "{A66BB1D6-8048-4BCB-BFA0-CE40B46FC4C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ti92class", "ti92class\ti92class.csproj", "{BFAE9F84-E7B2-46D6-8F34-DD4692BF826B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A66BB1D6-8048-4BCB-BFA0-CE40B46FC4C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A66BB1D6-8048-4BCB-BFA0-CE40B46FC4C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A66BB1D6-8048-4BCB-BFA0-CE40B46FC4C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A66BB1D6-8048-4BCB-BFA0-CE40B46FC4C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFAE9F84-E7B2-46D6-8F34-DD4692BF826B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAE9F84-E7B2-46D6-8F34-DD4692BF826B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAE9F84-E7B2-46D6-8F34-DD4692BF826B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAE9F84-E7B2-46D6-8F34-DD4692BF826B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCE8E697-90A4-4642-8AF7-9588605067F6}
+	EndGlobalSection
+EndGlobal
