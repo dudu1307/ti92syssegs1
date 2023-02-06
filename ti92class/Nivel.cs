@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace ti92class
 {
@@ -17,8 +18,8 @@ namespace ti92class
         //public int Id { get => id; set => id = value; }
         //public string Nome { get => nome; set => nome = value; }
         //public string Sigla { get => sigla; set => sigla = value; }
-        private int id;
-        public int Id { get; }
+        //private int id;
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Sigla { get; set; }
 
@@ -32,7 +33,7 @@ namespace ti92class
         public Nivel(int _id, string _nome, string _sigla)
         { 
         
-            id = _id;
+            Id = _id;
             Nome = _nome;
             Sigla = _sigla;
         }
@@ -41,16 +42,36 @@ namespace ti92class
         public void Inserir()
         {
             //Gravar um novo nível na tabela níveis
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "insert niveis (nome,sigla) values ('"+Nome+"','"+Sigla+"')";
+            cmd.ExecuteNonQuery();
+            cmd.CommandText = "select @@identity";
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
         }
         public static List<Nivel> Listar()
         {
-            //Entrega uma lista de todos os níveis
+            // 0 - Entrega uma lista de todos os níveis(cria um espaço do tipo lista)
             List<Nivel> lista = new List<Nivel>();
             //Lógica que recupera todos os níveis da tabela
+            // 1 - Abrir conexão com o banco de dados
+            var cmd = Banco.Abrir();
+            // 2 - Definir tipo de comando SQL(text/store procedure)
+            cmd.CommandType = System.Data.CommandType.Text;
+            // 3 - Atribuir comando SQL
+            cmd.CommandText = "select * from niveis order by nome asc";
+            // 4 - Executar o comando SQL e armazenar o retorno do banco em um objeto MySQLDataReader
+            var dr = cmd.ExecuteReader();
+            // 5- Preencher o objeto List com o retorno do banco, se houver
+            while (dr.Read()) // Enquanto houver próximo registro
+            {
+                lista.Add(new Nivel(dr.GetInt32(0), dr.GetString(1), dr.GetString(2)));
+            }
+            // Retorna a lista preenchida
             return lista;
             
         }
-        public Nivel ObterPorId(int _id)
+        public static Nivel ObterPorId(int _id)
         {
             Nivel nivel = new Nivel();
             var cmd = Banco.Abrir();
@@ -59,16 +80,20 @@ namespace ti92class
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                Id = dr.GetInt32(0);
-                Nome = dr.GetString(1);
-                Sigla = dr.GetString(2);
+                nivel.Id = dr.GetInt32(0);
+                nivel.Nome = dr.GetString(1);
+                nivel.Sigla = dr.GetString(2);
             }
 
             return nivel;
         }
         public static void Atualizar(Nivel nivel)
         {
-            
+            var cmd = Banco.Abrir();
+            cmd.CommandType= System.Data.CommandType.Text;
+            cmd.CommandText = "update niveis set nome = '"+nivel.Nome+"', sigla = '"+nivel.Sigla+"' where id = "+nivel.Id;
+            cmd.ExecuteReader();
+
         }
         public bool Excluir(int _id)
         {
