@@ -20,9 +20,9 @@ namespace ti92app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            var nivel = Nivel.ObterPorId(2);
-            label1.Text = nivel.Id + " - " + nivel.Nome + " - " + nivel.Sigla;
+            comboBox1.DataSource = Nivel.Listar();
+            comboBox1.DisplayMember = "Nome";
+            comboBox1.ValueMember = "Id";
             AtualizaListBox();
             
         }
@@ -84,6 +84,41 @@ namespace ti92app
             txtSiglaNivel.Clear();
             txtNomeNivel.Focus();
 
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            //Se txtBusca.Text for diferente de vazio
+            //e (&&) txtBsuca.Text.Length for maior ou igual a 2
+            if(txtBusca.Text!=string.Empty && txtBusca.Text.Length>=2)
+            {
+                listBox1.Items.Clear();
+                var niveis = Nivel.BuscarPorNome(txtBusca.Text);
+                if (niveis.Count > 0)
+                {
+                    foreach(var nivel in niveis)
+                    {
+                        listBox1.Items.Add(nivel.Id + " - " +nivel.Nome + " - "+nivel.Sigla);
+                    }
+                }
+                else
+                {    
+                    listBox1.Items.Add("Não há registros para essa busca");
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if(txtIdNivel.Text!=string.Empty)
+            {
+                Nivel nivel = Nivel.ObterPorId(int.Parse(txtIdNivel.Text));
+                if(nivel.Excluir(nivel.Id))
+                {
+                    MessageBox.Show("Nível "+ nivel.Nome+" excluído com sucesso", "Exclusão de nível");
+                    AtualizaListBox();
+                }
+            }
         }
     }
 }
