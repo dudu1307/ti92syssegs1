@@ -42,10 +42,11 @@ namespace ti92class
             //Gravar um novo usuário na tabela usuarios
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert usuarios (nome,email,nivel,senha,ativo) values ('" + Nome + "','" + Email + "','" + Nivel + "','" + Senha + "','" + Ativo +"')";
+            cmd.CommandText = "insert usuarios (nome,email,nivel_id,senha,ativo) values ('" + Nome + "','" + Email + "'," + Nivel.Id + ",'" + Senha + "','" + Ativo +"')";
             cmd.ExecuteNonQuery();
             cmd.CommandText = "select @@identity";
             Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
         }
         public static List<Usuario> Listar()
         {
@@ -57,8 +58,15 @@ namespace ti92class
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                lista.Add(new Usuario(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), Nivel.ObterPorId(dr.GetInt32(3)), dr.GetString(4), dr.GetBoolean(5)));
+                lista.Add(new Usuario
+                    (dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    Nivel.ObterPorId(dr.GetInt32(4)), 
+                    dr.GetString(3),
+                    dr.GetBoolean(5)));
             }
+
             return lista;
         }
         public static Usuario ObterPorId(int _id)
@@ -73,8 +81,8 @@ namespace ti92class
                 usuario.Id = dr.GetInt32(0);
                 usuario.Nome = dr.GetString(1); 
                 usuario.Email= dr.GetString(2);
-                usuario.Nivel = Nivel.ObterPorId(dr.GetInt32(3));
-                usuario.Senha= dr.GetString(4);
+                usuario.Nivel = Nivel.ObterPorId(dr.GetInt32(4));
+                usuario.Senha= dr.GetString(3);
                 usuario.Ativo = dr.GetBoolean(5);
             }
 
@@ -85,10 +93,37 @@ namespace ti92class
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "update usuarios set nome = '" + usuario.Nome + "', email = '" + usuario.Email + "', Nivel = '" + usuario.Nivel + "', Senha = '" + usuario.Senha + "', Ativo = '" + usuario.Ativo + "' where id =" + usuario.Id;
+            cmd.ExecuteReader();
         }
         public bool Excluir(int _id)
         {
-            return true;
+            var cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "delete from usuarios where id = " + _id;
+            bool result = cmd.ExecuteNonQuery()==1?true:false;
+            return result;
+        }
+
+        public static List<Usuario>BuscarPorNome(string _parte)
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType= CommandType.Text;
+            cmd.CommandText = "select * from usuarios where nome likw '%" + _parte + "%' order by nome;";
+            var dr = cmd.ExecuteReader();
+            List<Usuario> lista = new List<Usuario>();
+            while (dr.Read())
+            {
+                lista.Add(new Usuario(
+                    dr.GetInt32(0), 
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    Nivel.ObterPorId(dr.GetInt32(3)), 
+                    dr.GetString(4), 
+                    dr.GetBoolean(5)
+                    )
+                  );
+            }
+            return lista;
         }
     }
 }

@@ -20,9 +20,9 @@ namespace ti92app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            comboBox1.DataSource = Nivel.Listar();
-            comboBox1.DisplayMember = "Nome";
-            comboBox1.ValueMember = "Id";
+            comboNivelUsuario.DataSource = Nivel.Listar();
+            comboNivelUsuario.DisplayMember = "Nome";
+            comboNivelUsuario.ValueMember = "Id";
             AtualizaListBox();
             
         }
@@ -119,6 +119,79 @@ namespace ti92app
                     AtualizaListBox();
                 }
             }
+        }
+
+        //USUÁRIOS
+
+        private void btnInsereUsuario_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario(
+                txtNomeUsuario.Text, 
+                txtEmailUsuario.Text,
+                Nivel.ObterPorId((int)comboNivelUsuario.SelectedValue),
+                txtSenhaUsuario.Text,
+                checkBoxAtivo.Checked);
+            usuario.Inserir();
+            txtIdUsuario.Text = usuario.Id.ToString();
+            AtualizaListBox();
+            MessageBox.Show("Nível inserido com sucesso \n ID: " + usuario.Id.ToString());
+
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e) 
+         {
+                if (btnEditarUsuario.Text == "Editar")
+                {
+                    txtIdUsuario.ReadOnly = false;
+                    txtIdUsuario.Focus();
+                    btnEditarUsuario.Text = "Gravar";
+                    btnInsereUsuario.Enabled = false;
+                }
+                else
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.Id = int.Parse(txtIdUsuario.Text);
+                    usuario.Nome = txtNomeUsuario.Text;
+                    usuario.Email = txtEmailUsuario.Text;
+                    usuario.Senha = txtSenhaUsuario.Text;
+                    Nivel.ObterPorId(Convert.ToInt32(comboNivelUsuario));
+                    usuario.Ativo = checkBoxAtivo.Checked;
+                    Usuario.Atualizar(usuario);
+                    txtIdUsuario.ReadOnly = true;
+                    txtNomeUsuario.Focus();
+                    btnEditarUsuario.Text = "Editar";
+                    AtualizaListBox();
+                }
+            
+        }
+
+        private void txtIdUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (txtIdUsuario.Text!=string.Empty)
+            {
+                int id = int.Parse(txtIdUsuario.Text);
+                var usuario = Usuario.ObterPorId(id);
+                txtNomeUsuario.Text = usuario.Nome;
+                txtEmailUsuario.Text = usuario.Email;
+                txtSenhaUsuario.Text= usuario.Senha;
+                Nivel.ObterPorId(Convert.ToInt32(comboNivelUsuario));
+                checkBoxAtivo.Checked= usuario.Ativo;
+
+            }
+        }
+        private void AtualizaListBoxUsuario()
+        {
+            List<Usuario> list = Usuario.Listar();
+            listBox2.Items.Clear();
+            foreach (var item in list)
+            {
+                listBox2.Items.Add("ID: " + item.Id + " - NOME: " + item.Nome + " - EMAIL: " + item.Email + " - SENHA: " + item.Senha + " - NIVEL: " +item.Nivel + " - ATIVO: " +item.Ativo);
+            }
+            txtIdUsuario.Clear();
+            txtNomeUsuario.Clear();
+            txtEmailUsuario.Clear();
+            txtNomeUsuario.Focus();
+
         }
     }
 }
