@@ -59,7 +59,7 @@ namespace ti92class
             List<Produto> lista = new List<Produto>();
             var cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from produtos order by nome asc";
+            cmd.CommandText = "select * from produtos order by descricao asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
