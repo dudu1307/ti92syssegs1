@@ -80,5 +80,10 @@ namespace ti92app
             Produto.Arquivar(id);
             FrmProdutos_Load(sender, e);
         }
+
+        private void dtgLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

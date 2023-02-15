@@ -96,5 +96,10 @@ namespace ti92app
             txtNomeUsuario.Focus();
 
         }
+
+        private void btnInsereUsuario_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

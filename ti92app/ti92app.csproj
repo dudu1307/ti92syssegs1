@@ -176,5 +176,35 @@
   <ItemGroup>
     <None Include="Resources\7837_64x641.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\erroo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\23.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pencil.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\View.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_edit24_h.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10680_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10680_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7837_64x642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10680_128x1281.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

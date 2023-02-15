@@ -28,5 +28,10 @@ namespace ti92app
             //frmProdutos.ShowDialog(); - Não funciona quando o Form é filho
             frmProdutos.Show();
         }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

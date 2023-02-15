@@ -14,7 +14,7 @@ namespace ti92class
             MySqlCommand cmd = new MySqlCommand();
             try //Tenta abrir
             {
-                string strCon = @"server=127.0.0.1;database=ti92sysdb;user id=root;password=";
+                string strCon = @"server=127.0.0.1;database=ti91sysdb;user id=root;password=";
                 MySqlConnection cn = new MySqlConnection(strCon);
                 cn.Open();
                 cmd.Connection = cn;

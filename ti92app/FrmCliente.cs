@@ -16,5 +16,10 @@ namespace ti92app
         {
             InitializeComponent();
         }
+
+        private void dtCadastro_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
