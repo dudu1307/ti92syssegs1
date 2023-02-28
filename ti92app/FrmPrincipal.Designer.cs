@@ -88,20 +88,20 @@
             this.consultaToolStripMenuItem});
             this.clientesToolStripMenuItem.Image = global::ti92app.Properties.Resources._7837_64x64;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.clientesToolStripMenuItem.Text = "C&lientes";
             // 
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.novoToolStripMenuItem.Text = "&Novo";
             this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // consultaToolStripMenuItem
             // 
             this.consultaToolStripMenuItem.Name = "consultaToolStripMenuItem";
-            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.consultaToolStripMenuItem.Text = "&Consulta";
             // 
             // produtosToolStripMenuItem
@@ -112,26 +112,26 @@
             this.gerenciarToolStripMenuItem});
             this.produtosToolStripMenuItem.Image = global::ti92app.Properties.Resources.Estoque;
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.produtosToolStripMenuItem.Text = "&Produtos";
             // 
             // novoToolStripMenuItem1
             // 
             this.novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
-            this.novoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.novoToolStripMenuItem1.Text = "&Novo";
             this.novoToolStripMenuItem1.Click += new System.EventHandler(this.novoToolStripMenuItem1_Click);
             // 
             // listarToolStripMenuItem
             // 
             this.listarToolStripMenuItem.Name = "listarToolStripMenuItem";
-            this.listarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.listarToolStripMenuItem.Text = "&Listar";
             // 
             // gerenciarToolStripMenuItem
             // 
             this.gerenciarToolStripMenuItem.Name = "gerenciarToolStripMenuItem";
-            this.gerenciarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gerenciarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.gerenciarToolStripMenuItem.Text = "&Gerenciar";
             // 
             // usuariosToolStripMenuItem
@@ -143,31 +143,31 @@
             this.perfilToolStripMenuItem});
             this.usuariosToolStripMenuItem.Image = global::ti92app.Properties.Resources.User;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.usuariosToolStripMenuItem.Text = "&Usuarios";
             // 
             // novoToolStripMenuItem2
             // 
             this.novoToolStripMenuItem2.Name = "novoToolStripMenuItem2";
-            this.novoToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem2.Size = new System.Drawing.Size(151, 22);
             this.novoToolStripMenuItem2.Text = "&Novo";
             // 
             // consultaToolStripMenuItem1
             // 
             this.consultaToolStripMenuItem1.Name = "consultaToolStripMenuItem1";
-            this.consultaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.consultaToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.consultaToolStripMenuItem1.Text = "&Consulta";
             // 
             // configuraçõesToolStripMenuItem
             // 
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.configuraçõesToolStripMenuItem.Text = "&Configurações";
             // 
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.perfilToolStripMenuItem.Text = "&Perfil";
             // 
             // operaçãoToolStripMenuItem
@@ -189,12 +189,14 @@
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
             this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pedidoToolStripMenuItem.Text = "&Pedido";
+            this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // novoToolStripMenuItem3
             // 
             this.novoToolStripMenuItem3.Name = "novoToolStripMenuItem3";
             this.novoToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem3.Text = "&Novo";
+            this.novoToolStripMenuItem3.Click += new System.EventHandler(this.novoToolStripMenuItem3_Click);
             // 
             // listarToolStripMenuItem1
             // 
@@ -229,21 +231,21 @@
             // 
             this.vendasToolStripMenuItem.Image = global::ti92app.Properties.Resources._1911_64x64;
             this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
-            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.vendasToolStripMenuItem.Text = "&Vendas";
             // 
             // caixaToolStripMenuItem
             // 
             this.caixaToolStripMenuItem.Image = global::ti92app.Properties.Resources.caixareg_gif;
             this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            this.caixaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.caixaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.caixaToolStripMenuItem.Text = "&Caixa";
             // 
             // pagamentosToolStripMenuItem
             // 
             this.pagamentosToolStripMenuItem.Image = global::ti92app.Properties.Resources._6986_64x64;
             this.pagamentosToolStripMenuItem.Name = "pagamentosToolStripMenuItem";
-            this.pagamentosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pagamentosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.pagamentosToolStripMenuItem.Text = "&Pagamentos";
             // 
             // statusStrip1

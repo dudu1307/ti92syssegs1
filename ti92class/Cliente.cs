@@ -18,7 +18,7 @@ namespace ti92class
         public DateTime DataCad { get; set; }
         public bool Ativo { get; set; }
 
-        //Métodos Construtores
+        // 
         public Cliente() { }
 
         public Cliente(int id, string nome, string cpf, string email, DateTime dataCad, bool ativo)
@@ -40,7 +40,6 @@ namespace ti92class
             Ativo = ativo;
         }
 
-        //Métodos da Classe
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -56,7 +55,7 @@ namespace ti92class
             List<Cliente> lista = new List<Cliente>();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from cliente order by nome asc";
+            cmd.CommandText = "select * from clientes order by nome asc";
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -90,7 +89,7 @@ namespace ti92class
             return cliente;
         }
 
-        //ATUALIZAR
+        
         public void Atualizar()
         {
             var cmd = Banco.Abrir();
@@ -101,7 +100,6 @@ namespace ti92class
             cmd.ExecuteReader();
         }
 
-        //RESTAURAR
         public static bool Restaurar(int id)
         {
             var cmd = Banco.Abrir();
@@ -110,7 +108,7 @@ namespace ti92class
             return cmd.ExecuteNonQuery() == 1 ? true : false;
         }
 
-        //ARQUIVAR
+        
         public static bool Arquivar(int id)
         {
             var cmd = Banco.Abrir();
@@ -119,7 +117,6 @@ namespace ti92class
             return cmd.ExecuteNonQuery() == 1 ? true : false;
         }
 
-        //BUSCAR
         public static List<Cliente> BuscarPorNome(string _parte)
         {
             var cmd = Banco.Abrir();
