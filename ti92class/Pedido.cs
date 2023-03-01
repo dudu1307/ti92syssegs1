@@ -20,7 +20,6 @@ namespace ti92class
         public List<ItemPedido> Itens { get; set; }
         public string Hashcode { get; set; }
 
-        //MÉTODOS CONSTRUTORES
 
         public Pedido()
         {
@@ -51,7 +50,7 @@ namespace ti92class
             Usuario = usuario;
         }
 
-        //ADICIONAR
+        
         public void Inserir()
         {
             var cmd = Banco.Abrir();
@@ -64,13 +63,13 @@ namespace ti92class
             cmd.CommandText = "select @@identity";
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             Random rand = new Random();
-            string hash = "P" + Id + rand.Next(10001, 99999);
+            string hash = "P" +Id+ rand.Next(10001, 99999);
             Hashcode = hash;
             cmd.CommandText = "update pedidos set hashcode = '" + hash + "' where id =" + Id;
             cmd.ExecuteNonQuery(); //Grava no Banco
         }
 
-        //LISTAR
+        
         public static List<Pedido> Listar()
         {
             List<Pedido> list = new List<Pedido>();
@@ -94,7 +93,6 @@ namespace ti92class
             return list;
         }
 
-        //OBTER
         public static Pedido ObterPorId(int id)
         {
             Pedido pedido = new Pedido();
@@ -115,8 +113,6 @@ namespace ti92class
             }
             return pedido;
         }
-
-        //EDITAR/ATUALIZAR
         public void Atualizar()
         {
             var cmd = Banco.Abrir();
@@ -128,7 +124,7 @@ namespace ti92class
             cmd.ExecuteNonQuery();
         }
 
-        //ARQUIVADOS EM
+        
         public List<Pedido> Arquivados()
         {
             List<Pedido> list = new List<Pedido>();
@@ -152,7 +148,6 @@ namespace ti92class
             return list;
         }
 
-        //ARQUIVAR
         public void Arquivar()
         {
             var cmd = Banco.Abrir();
@@ -160,20 +155,13 @@ namespace ti92class
             cmd.ExecuteNonQuery();
         }
 
-        //RESTAURAR
+        
         public void Restaurar(int id)
         {
             var cmd = Banco.Abrir();
             cmd.CommandText = "update pedidos set arquivado_em = null where id =" + Id;
             cmd.ExecuteNonQuery();
         }
-
-        //OBTER O PREÇO TOTAL
-        // public double ObterTotal()
-        // {
-
-        //  }
-
 
     }
 }

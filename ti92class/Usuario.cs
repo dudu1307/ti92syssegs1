@@ -71,7 +71,7 @@ namespace ti92class
         }
         public static Usuario ObterPorId(int _id)
         {
-            Usuario usuario = null;
+            Usuario usuario = new Usuario();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "select * from usuarios where id =" + _id;

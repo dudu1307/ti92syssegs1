@@ -27,8 +27,10 @@ namespace ti92app
             cmbUsuario.DataSource = Usuario.Listar();
             cmbUsuario.DisplayMember = "Nome";
             cmbUsuario.ValueMember = "Id";
+
         }
 
+        //INSERIR
         private void btnInserir_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido(
@@ -36,20 +38,84 @@ namespace ti92app
                 Usuario.ObterPorId((int)cmbUsuario.SelectedValue)
                 );
             pedido.Inserir();
-            lblStatus.Text = pedido.Status.ToString();
+            lblStatus.Text = pedido.Status.ToString() + " - " + pedido.Hashcode;
             txtId.Text = pedido.Id.ToString();
-
-
+            btnInserir.Enabled = false;
+            grbProdutos.Enabled = true;
+            txtIdProd.Focus(); 
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        private void txtIdProd_TextChanged(object sender, EventArgs e)
         {
+            Produto produto = Produto.ObterPorId(int.Parse(txtIdProd.Text));
+
+            if (txtIdProd.Text != string.Empty)
+            {
+                if (produto.Id > 0)
+                {
+                    txtDescricao.Text = produto.Descricao;
+                    txtUnid.Text = produto.Unidade;
+                    txtPreco.Text = produto.Preco.ToString();
+                    txtQtd.Focus();
+
+                }
+                else
+                {
+                    txtDescricao.Text = "*****Produto não cadastrado!*****";
+                }
+            }
+            else
+            {
+                txtDescricao.Clear();
+                txtUnid.Clear();
+                txtPreco.Clear();
+                
+            }
 
         }
 
-        private void lblStatus_Click(object sender, EventArgs e)
+        private void btnNovo_Click(object sender, EventArgs e)
         {
+            grbDados.Enabled= true;
+            btnNovo.Enabled= false;
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            ItemPedido item = new ItemPedido(
+                int.Parse(txtId.Text),
+                Produto.ObterPorId(int.Parse(txtIdProd.Text)),
+                double.Parse(txtQtd.Text),
+                double.Parse(txtDesconto.Text)
+                );
+            item.Adicionar();
+            AtualizaDataGrid(int.Parse(txtId.Text));
+        }
+        public void AtualizaDataGrid(int id)
+        {
+            dgvItens.Rows.Clear();
+            List<ItemPedido> items = ItemPedido.Listar(id);
+            double total = 0;
+            int linha = 0;
+            foreach (var item in items ) 
+            {
+                dgvItens.Rows.Add();
+                dgvItens.Rows[linha].Cells[0].Value = linha + 1;
+                dgvItens.Rows[linha].Cells[1].Value = item.Produto.Id.ToString();
+                dgvItens.Rows[linha].Cells[2].Value = item.Produto.Descricao.ToString();
+                dgvItens.Rows[linha].Cells[3].Value = item.Produto.Unidade.ToString();
+                dgvItens.Rows[linha].Cells[4].Value = item.Preco.ToString("##0.00");
+                dgvItens.Rows[linha].Cells[5].Value = item.Quantidade.ToString();
+                dgvItens.Rows[linha].Cells[6].Value = item.Desconto.ToString("##0.00");
+                double totalItem = (item.Preco * item.Quantidade) - item.Desconto;
+                dgvItens.Rows[linha].Cells[7].Value = totalItem.ToString("##0.00");
+                linha++;
+                total += totalItem;
+            }
+            txtTotal.Text = total.ToString("##0.00");
 
         }
+
+    
     }
 }

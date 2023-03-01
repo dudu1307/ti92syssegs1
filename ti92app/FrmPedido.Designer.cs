@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grbDados = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -36,20 +39,20 @@
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.btnInserir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.grbProdutos = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.txtPreco = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtQtd = new System.Windows.Forms.TextBox();
+            this.txtUnid = new System.Windows.Forms.TextBox();
+            this.txtIdProd = new System.Windows.Forms.TextBox();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvItens = new System.Windows.Forms.DataGridView();
             this.clnSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +81,7 @@
             this.grbDados.Controls.Add(this.cmbUsuario);
             this.grbDados.Controls.Add(this.cmbCliente);
             this.grbDados.Controls.Add(this.btnInserir);
+            this.grbDados.Enabled = false;
             this.grbDados.Location = new System.Drawing.Point(18, 127);
             this.grbDados.Name = "grbDados";
             this.grbDados.Size = new System.Drawing.Size(357, 132);
@@ -148,49 +152,54 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "PEDIDO Nº";
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(136, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 31);
-            this.textBox1.TabIndex = 2;
+            this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtId.Location = new System.Drawing.Point(136, 12);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(143, 31);
+            this.txtId.TabIndex = 2;
+            this.txtId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // grbProdutos
             // 
-            this.grbProdutos.Controls.Add(this.textBox7);
-            this.grbProdutos.Controls.Add(this.textBox6);
+            this.grbProdutos.Controls.Add(this.txtDesconto);
+            this.grbProdutos.Controls.Add(this.txtPreco);
             this.grbProdutos.Controls.Add(this.label12);
             this.grbProdutos.Controls.Add(this.label11);
             this.grbProdutos.Controls.Add(this.label10);
             this.grbProdutos.Controls.Add(this.label9);
             this.grbProdutos.Controls.Add(this.label8);
             this.grbProdutos.Controls.Add(this.label6);
-            this.grbProdutos.Controls.Add(this.textBox5);
-            this.grbProdutos.Controls.Add(this.textBox4);
-            this.grbProdutos.Controls.Add(this.textBox3);
-            this.grbProdutos.Controls.Add(this.textBox2);
+            this.grbProdutos.Controls.Add(this.txtQtd);
+            this.grbProdutos.Controls.Add(this.txtUnid);
+            this.grbProdutos.Controls.Add(this.txtIdProd);
+            this.grbProdutos.Controls.Add(this.txtDescricao);
             this.grbProdutos.Controls.Add(this.btnAdicionar);
-            this.grbProdutos.Location = new System.Drawing.Point(16, 265);
+            this.grbProdutos.Enabled = false;
+            this.grbProdutos.Location = new System.Drawing.Point(18, 275);
             this.grbProdutos.Name = "grbProdutos";
             this.grbProdutos.Size = new System.Drawing.Size(594, 180);
             this.grbProdutos.TabIndex = 3;
             this.grbProdutos.TabStop = false;
             this.grbProdutos.Text = "Produtos";
             // 
-            // textBox7
+            // txtDesconto
             // 
-            this.textBox7.Location = new System.Drawing.Point(10, 111);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(71, 20);
-            this.textBox7.TabIndex = 1;
+            this.txtDesconto.Location = new System.Drawing.Point(10, 111);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Size = new System.Drawing.Size(71, 20);
+            this.txtDesconto.TabIndex = 1;
+            this.txtDesconto.Text = "0";
             // 
-            // textBox6
+            // txtPreco
             // 
-            this.textBox6.Location = new System.Drawing.Point(392, 53);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(72, 20);
-            this.textBox6.TabIndex = 1;
+            this.txtPreco.Location = new System.Drawing.Point(392, 53);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.ReadOnly = true;
+            this.txtPreco.Size = new System.Drawing.Size(72, 20);
+            this.txtPreco.TabIndex = 1;
+            this.txtPreco.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
@@ -209,7 +218,6 @@
             this.label11.Size = new System.Drawing.Size(24, 13);
             this.label11.TabIndex = 2;
             this.label11.Text = "Qtd";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -247,33 +255,37 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Código";
             // 
-            // textBox5
+            // txtQtd
             // 
-            this.textBox5.Location = new System.Drawing.Point(488, 53);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(57, 20);
-            this.textBox5.TabIndex = 1;
+            this.txtQtd.Location = new System.Drawing.Point(488, 53);
+            this.txtQtd.Name = "txtQtd";
+            this.txtQtd.Size = new System.Drawing.Size(57, 20);
+            this.txtQtd.TabIndex = 1;
             // 
-            // textBox4
+            // txtUnid
             // 
-            this.textBox4.Location = new System.Drawing.Point(334, 53);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(46, 20);
-            this.textBox4.TabIndex = 1;
+            this.txtUnid.Location = new System.Drawing.Point(334, 53);
+            this.txtUnid.Name = "txtUnid";
+            this.txtUnid.ReadOnly = true;
+            this.txtUnid.Size = new System.Drawing.Size(46, 20);
+            this.txtUnid.TabIndex = 1;
             // 
-            // textBox3
+            // txtIdProd
             // 
-            this.textBox3.Location = new System.Drawing.Point(10, 53);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 1;
+            this.txtIdProd.Location = new System.Drawing.Point(10, 53);
+            this.txtIdProd.Name = "txtIdProd";
+            this.txtIdProd.Size = new System.Drawing.Size(100, 20);
+            this.txtIdProd.TabIndex = 1;
+            this.txtIdProd.TextChanged += new System.EventHandler(this.txtIdProd_TextChanged);
             // 
-            // textBox2
+            // txtDescricao
             // 
-            this.textBox2.Location = new System.Drawing.Point(120, 53);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(204, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtDescricao.Location = new System.Drawing.Point(120, 53);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ReadOnly = true;
+            this.txtDescricao.Size = new System.Drawing.Size(204, 20);
+            this.txtDescricao.TabIndex = 1;
+            this.txtDescricao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnAdicionar
             // 
@@ -283,6 +295,7 @@
             this.btnAdicionar.TabIndex = 0;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // dgvItens
             // 
@@ -299,11 +312,11 @@
             this.clnQuantidade,
             this.clnDesconto,
             this.clnTotal});
-            this.dgvItens.Location = new System.Drawing.Point(8, 451);
+            this.dgvItens.Location = new System.Drawing.Point(10, 461);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
             this.dgvItens.RowHeadersVisible = false;
-            this.dgvItens.Size = new System.Drawing.Size(602, 233);
+            this.dgvItens.Size = new System.Drawing.Size(602, 175);
             this.dgvItens.TabIndex = 4;
             // 
             // clnSeq
@@ -340,6 +353,8 @@
             // 
             // clnPreco
             // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnPreco.DefaultCellStyle = dataGridViewCellStyle16;
             this.clnPreco.Frozen = true;
             this.clnPreco.HeaderText = "Preço";
             this.clnPreco.Name = "clnPreco";
@@ -356,6 +371,8 @@
             // 
             // clnDesconto
             // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnDesconto.DefaultCellStyle = dataGridViewCellStyle17;
             this.clnDesconto.Frozen = true;
             this.clnDesconto.HeaderText = "Desconto";
             this.clnDesconto.Name = "clnDesconto";
@@ -364,6 +381,8 @@
             // 
             // clnTotal
             // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.clnTotal.DefaultCellStyle = dataGridViewCellStyle18;
             this.clnTotal.Frozen = true;
             this.clnTotal.HeaderText = "Total Item R$";
             this.clnTotal.Name = "clnTotal";
@@ -399,12 +418,13 @@
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(467, 20);
+            this.btnNovo.Location = new System.Drawing.Point(282, 98);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 23);
             this.btnNovo.TabIndex = 7;
             this.btnNovo.Text = "+Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // lblStatus
             // 
@@ -415,13 +435,12 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 24);
             this.lblStatus.TabIndex = 1;
-            this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
             // FrmPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 783);
+            this.ClientSize = new System.Drawing.Size(627, 655);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label2);
@@ -429,7 +448,7 @@
             this.Controls.Add(this.grbProdutos);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grbDados);
             this.Name = "FrmPedido";
@@ -449,15 +468,14 @@
 
         private System.Windows.Forms.GroupBox grbDados;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox grbProdutos;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbUsuario;
         private System.Windows.Forms.ComboBox cmbCliente;
         private System.Windows.Forms.Button btnInserir;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtIdProd;
+        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgvItens;
         private System.Windows.Forms.TextBox txtTotal;
@@ -465,16 +483,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPreco;
+        private System.Windows.Forms.TextBox txtQtd;
+        private System.Windows.Forms.TextBox txtUnid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn clrCodigo;
@@ -484,5 +502,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnTotal;
+        private System.Windows.Forms.TextBox txtId;
     }
 }
