@@ -13,6 +13,8 @@ namespace ti92app
 {
     public partial class FrmPedido : Form
     {
+        private double DescontoMax { get; set; }
+
         public FrmPedido()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace ti92app
 
         }
 
-        //INSERIR
+        
         private void btnInserir_Click(object sender, EventArgs e)
         {
             Pedido pedido = new Pedido(
@@ -45,33 +47,40 @@ namespace ti92app
             txtIdProd.Focus(); 
         }
 
-        private void txtIdProd_TextChanged(object sender, EventArgs e)
+       private void txtIdProd_TextChanged(object sender, EventArgs e)
         {
-            Produto produto = Produto.ObterPorId(int.Parse(txtIdProd.Text));
-
-            if (txtIdProd.Text != string.Empty)
+            if(txtIdProd.Text != string.Empty)
             {
+                Produto produto = Produto.ObterPorId(int.Parse(txtIdProd.Text));
                 if (produto.Id > 0)
                 {
                     txtDescricao.Text = produto.Descricao;
                     txtUnid.Text = produto.Unidade;
                     txtPreco.Text = produto.Preco.ToString();
-                    txtQtd.Focus();
-
+                    if (produto.Desconto > 0)
+                    {
+                        DescontoMax = produto.Desconto * produto.Preco;
+                        lblDescMax.Text = DescontoMax.ToString("#0.00");
+                        txtDesconto.Enabled = true;
+                    }
+                    else
+                    {
+                        txtDesconto.Enabled = false;
+                    }
                 }
                 else
                 {
-                    txtDescricao.Text = "*****Produto não cadastrado!*****";
+                    txtDescricao.Text = "Produto não cadastrado! :(";
                 }
+
             }
             else
             {
                 txtDescricao.Clear();
                 txtUnid.Clear();
                 txtPreco.Clear();
-                
             }
-
+           
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -82,7 +91,7 @@ namespace ti92app
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            ItemPedido item = new ItemPedido(
+                ItemPedido item = new ItemPedido(
                 int.Parse(txtId.Text),
                 Produto.ObterPorId(int.Parse(txtIdProd.Text)),
                 double.Parse(txtQtd.Text),
@@ -116,6 +125,9 @@ namespace ti92app
 
         }
 
-    
+        private void txtId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

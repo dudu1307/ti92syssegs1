@@ -44,12 +44,12 @@ namespace ti92class
 
         public ItemPedido() { }
 
- 
+
         public static List<ItemPedido> Listar(int pedido_id)
         {
             List<ItemPedido> itens = new List<ItemPedido>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select * from itempedido where pedido_id = "+pedido_id;
+            cmd.CommandText = "select * from itempedido where pedido_id = " + pedido_id;
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -64,7 +64,7 @@ namespace ti92class
             return itens;
         }
 
-      
+
         public static ItemPedido BuscarPorProdutoPedido(int pedido_id, int produto_id)
         {
            ItemPedido item = new ItemPedido();
@@ -82,11 +82,11 @@ namespace ti92class
             return item;
         }
 
-     
+
         public void Adicionar()
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText = "insert itempedido (pedido_id, produto_id, preco, quantidade, desconto)"+
+            cmd.CommandText = "insert itempedido (pedido_id, produto_id, preco, quantidade, desconto)" +
                 "values (@pedido_id, @produto_id, @preco, @quantidade, @desconto)";
             cmd.Parameters.Clear();
             cmd.Parameters.Add("@pedido_id", MySqlDbType.Int32).Value = Id;
@@ -97,7 +97,7 @@ namespace ti92class
             cmd.ExecuteNonQuery();
         }
 
-        
+
         public void Atualizar(int pedido_id)
         {
             var cmd = Banco.Abrir();
