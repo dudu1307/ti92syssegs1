@@ -9,16 +9,7 @@ namespace ti92class
 {
     public class Nivel
     {
-        //Atributos - Campos
-        //private int id;
-        //private string nome;
-        //private string sigla;
-
-        //Propriedades - Método de Acesso
-        //public int Id { get => id; set => id = value; }
-        //public string Nome { get => nome; set => nome = value; }
-        //public string Sigla { get => sigla; set => sigla = value; }
-        //private int id;
+        
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Sigla { get; set; }
@@ -38,10 +29,9 @@ namespace ti92class
             Sigla = _sigla;
         }
 
-        //Métodos da Classe
+        
         public void Inserir()
         {
-            //Gravar um novo nível na tabela níveis
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "insert niveis (nome,sigla) values ('"+Nome+"','"+Sigla+"')";

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +8,9 @@ namespace ti92class
 {
     public class Telefone
     {
-        public int Id  { get; set;}
-        public string Numero { get; set;}
-        public string Tipo { get; set;}
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public string Tipo { get; set; }
         public Telefone() { }
 
         public Telefone(int id, string numero, string tipo)
@@ -23,15 +22,15 @@ namespace ti92class
 
         public Telefone(string numero, string tipo)
         {
-            Numero= numero;
-            Tipo= tipo;
+            Numero = numero;
+            Tipo = tipo;
         }
 
         public void Inserir(int cliente_id)
         {
             var cmd = Banco.Abrir();
-            cmd.CommandText= "insert telefenos (cliente_id, numero, tipo) values ("+cliente_id+",'"+Numero+"', '"+Tipo+"')";
-            cmd.ExecuteNonQuery();       
+            cmd.CommandText = "insert telefenos (cliente_id, numero, tipo) values (" + cliente_id + ",'" + Numero + "', '" + Tipo + "')";
+            cmd.ExecuteNonQuery();
             cmd.Connection.Close();
         }
 
@@ -39,7 +38,7 @@ namespace ti92class
         {
             List<Telefone> listaTel = new List<Telefone>();
             var cmd = Banco.Abrir();
-            cmd.CommandText = "select id, numero, tipo from telefones where cliente_id = " +cliente_id;
+            cmd.CommandText = "select id, numero, tipo from telefones where cliente_id = " + cliente_id;
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {

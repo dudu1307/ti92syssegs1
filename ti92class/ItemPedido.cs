@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,15 +17,7 @@ namespace ti92class
         public double Quantidade { get; set; }
         public double Desconto { get; set; }
 
-      
-        public ItemPedido(int id, Produto produto, double quantidade, double desconto)
-        {
-            Id = id;
-            Produto = produto;
-            Preco = produto.Preco;
-            Quantidade = quantidade;
-            Desconto = desconto;
-        }
+        //MÉTODOS CONSTRUTORES
         public ItemPedido(int id, Produto produto, double preco, double quantidade, double desconto)
         {
             Id = id;
@@ -42,9 +35,18 @@ namespace ti92class
             Desconto = desconto;
         }
 
+        public ItemPedido(int id, Produto produto, double quantidade, double desconto)
+        {
+            Id = id;
+            Produto = produto;
+            Preco = produto.Preco;
+            Quantidade = quantidade;
+            Desconto = desconto;
+        }
+
         public ItemPedido() { }
 
-
+        //LISTAR
         public static List<ItemPedido> Listar(int pedido_id)
         {
             List<ItemPedido> itens = new List<ItemPedido>();
@@ -64,10 +66,10 @@ namespace ti92class
             return itens;
         }
 
-
+        //BUSCAR
         public static ItemPedido BuscarPorProdutoPedido(int pedido_id, int produto_id)
         {
-           ItemPedido item = new ItemPedido();
+            ItemPedido item = new ItemPedido();
             var cmd = Banco.Abrir();
             cmd.CommandText = "select * from itempedido where pedido_id = " + pedido_id;
             var dr = cmd.ExecuteReader();
@@ -82,7 +84,7 @@ namespace ti92class
             return item;
         }
 
-
+        //ADICIONAR
         public void Adicionar()
         {
             var cmd = Banco.Abrir();
@@ -97,7 +99,7 @@ namespace ti92class
             cmd.ExecuteNonQuery();
         }
 
-
+        //ATUALIZAR
         public void Atualizar(int pedido_id)
         {
             var cmd = Banco.Abrir();
@@ -111,7 +113,7 @@ namespace ti92class
             cmd.ExecuteNonQuery();
         }
 
-        
+        //EXCLUIR
         public void Excluir(int id, int pedido_id)
         {
             var cmd = Banco.Abrir();
@@ -121,5 +123,7 @@ namespace ti92class
             cmd.Parameters.Add("@pedido_id", MySqlDbType.Int32).Value = pedido_id;
             cmd.ExecuteNonQuery();
         }
+
+        
     }
 }
